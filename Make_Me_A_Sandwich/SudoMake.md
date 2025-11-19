@@ -210,11 +210,11 @@ User cookie_cat_6 may run the following commands on 54412704bfd4:
 
 ### Exploitation avec OpenSSL Engine
 
-OpenSSL permet de charger des bibliothèques dynamiques personnalisées via l'option `-engine`. On va créer une bibliothèque malveillante qui exécute un reverse shell.
+OpenSSL permet de charger des bibliothèques dynamiques personnalisées via l'option `-engine`. On va créer une bibliothèque malveillante qui exécute un reverse shell. (ou un simple shell parce que c'est overkill en vrai sinon :p)
 
 #### Création de l'exploit
 
-**Sur la machine attaquante (Exegol) :**
+**Sur notre machine :**
 
 ```c
 cat > shell.c << 'EOF'
