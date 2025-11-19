@@ -212,7 +212,7 @@ OpenSSL permet de charger des bibliothèques dynamiques personnalisées via l'op
 
 #### Création de l'exploit
 
-**Sur la machine attaquante (Exegol) :**
+**Sur notre machine :**
 
 ```c
 cat > shell.c << 'EOF'
